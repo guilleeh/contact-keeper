@@ -28,7 +28,7 @@ const Contacts = () => {
                     : contacts.map(contact => (
                           <CSSTransition
                               key={contact.id}
-                              timeout={500}
+                              timeout={50}
                               classNames='item'
                           >
                               <ContactItem contact={contact} />
