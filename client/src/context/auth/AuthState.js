@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
+import axios from 'axios';
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -24,14 +25,46 @@ const AuthState = props => {
     const [state, dispatch] = useReducer(authReducer, intialState);
 
     // Load user
+    const loadUser = () => console.log('');
 
     // Register User
+    const register = async formData => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers':
+                    'Origin, X-Requested-With, Content-Type, Accept'
+            }
+        };
+
+        try {
+            const res = await axios.post(
+                'http://localhost:5000/api/users',
+                formData,
+                config
+            );
+
+            dispatch({
+                type: REGISTER_SUCCESS,
+                payload: res.data //JWT Token
+            });
+        } catch (err) {
+            dispatch({
+                type: REGISTER_FAIL,
+                payload: err.response.data.msg //give us error
+            });
+        }
+    };
 
     // Login User
+    const login = () => console.log('');
 
     // Logout
+    const logout = () => console.log('');
 
     // Clear Errors
+    const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
     return (
         <AuthContext.Provider
@@ -40,7 +73,12 @@ const AuthState = props => {
                 isAuthenticated: state.isAuthenticated,
                 loading: state.loading,
                 user: state.user,
-                error: state.error
+                error: state.error,
+                register,
+                loadUser,
+                login,
+                logout,
+                clearErrors
             }}
         >
             {props.children}
