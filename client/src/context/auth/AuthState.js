@@ -74,7 +74,32 @@ const AuthState = props => {
     };
 
     // Login User
-    const login = () => console.log('');
+    const login = async formData => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers':
+                    'Origin, X-Requested-With, Content-Type, Accept'
+            }
+        };
+
+        try {
+            const res = await axios.post('/api/auth', formData, config);
+
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data //JWT Token
+            });
+
+            loadUser();
+        } catch (err) {
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: err.response.data.msg //give us error
+            });
+        }
+    };
 
     // Logout
     const logout = () => console.log('');
