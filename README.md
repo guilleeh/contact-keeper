@@ -26,4 +26,4 @@ Full stack MERN application that allows you to save your contacts.
 
 ## Acknowledgments
 
--   [Traversy Media](https://github.com/bradtraversy) - For guidance through the development of Contact Keeper in his React course and for teaching the fundamentals of the Contact API and backend RESTful API's.
+-   [Traversy Media](https://github.com/bradtraversy) - For guidance through the development of Contact Keeper in his React course. Also for teaching the fundamentals of the Contact API and backend RESTful API's.
