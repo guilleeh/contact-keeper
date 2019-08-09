@@ -64,6 +64,29 @@ const ContactState = props => {
         }
     };
 
+    // Update Contact
+    const updateContact = async contact => {
+        const config = {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        };
+
+        try {
+            const res = await axios.put(
+                `/api/contacts/${contact._id}`,
+                contact,
+                config
+            );
+            const res2 = await axios.get('/api/contacts');
+
+            dispatch({ type: UPDATE_CONTACT, payload: res.data });
+            dispatch({ type: GET_CONTACTS, payload: res2.data });
+        } catch (err) {
+            dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+        }
+    };
+
     // Clear contacts
     const clearContacts = () => {
         dispatch({ type: CLEAR_CONTACTS });
@@ -79,10 +102,6 @@ const ContactState = props => {
         dispatch({ type: CLEAR_CURRENT });
     };
 
-    // Update Contact
-    const updateContact = contact => {
-        dispatch({ type: UPDATE_CONTACT, payload: contact });
-    };
     // Filter contacts
     const filterContacts = text => {
         dispatch({ type: FILTER_CONTACTS, payload: text });

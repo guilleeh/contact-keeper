@@ -41,6 +41,7 @@ const ContactForm = () => {
             addContact(contact); //This function is in our state
         } else {
             updateContact(contact);
+            clearAll();
         }
         setContact({
             name: '',
