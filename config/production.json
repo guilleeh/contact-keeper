@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb://memo:memo123@contact-keeper-shard-00-00-kva1f.mongodb.net:27017,contact-keeper-shard-00-01-kva1f.mongodb.net:27017,contact-keeper-shard-00-02-kva1f.mongodb.net:27017/test?ssl=true&replicaSet=contact-keeper-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "jwtSecret": "secret"
+}
