@@ -14,6 +14,8 @@ Full stack MERN application that allows you to save your contacts.
 
 [Contact-Keeper](https://floating-refuge-43177.herokuapp.com/login)
 
+-   Contact-Keeper is deployed on Heroku.
+
 ## Built With
 
 -   [React](https://reactjs.org/docs/getting-started.html) - Front-end framework used
